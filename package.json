@@ -16,7 +16,8 @@
     "koa-static": "^4.0.1",
     "koa-views": "^6.0.2",
     "leancloud-storage": "^3.11.0",
-    "leanengine": "^3.3.2"
+    "leanengine": "^3.3.2",
+    "nali-cli": "^2.1.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"

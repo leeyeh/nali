@@ -29,12 +29,12 @@ app.use(AV.koa());
 
 app.use(bodyParser());
 
-router.get('/', async function(ctx) {
-  ctx.state.currentTime = new Date();
-  await ctx.render('./index.ejs');
+const { promisify } = require('util');
+const exec = promisify(require('child_process').exec)
+router.get('/ip/:ip', async function(ctx) {
+  const IP = ctx.params['ip']
+  const {stdout, stderr} = await exec(`npx nali ${IP}`)
+  ctx.response.body = stdout || stderr
 });
-
-// You can store routings in multiple files according to their categories.
-app.use(require('./routes/todos').routes());
 
 module.exports = app;
