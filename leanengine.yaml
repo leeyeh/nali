@@ -1,1 +1,1 @@
-build: npx nali-cli 1.1.1.1 # db download
+build: npx nali 1.1.1.1 # db download
