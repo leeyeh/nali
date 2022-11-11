@@ -45,6 +45,10 @@ router.get("/character", async function (ctx) {
       )}`
     )
   ).json();
+  if (!character.status) {
+    ctx.response.body = character.msg;
+    return;
+  }
   const { pid, name, ...rest } = character?.data?.[0] ?? {};
   ctx.response.body = JSON.stringify(
     { 角色名: name, "角色 ID": pid, ...rest },
