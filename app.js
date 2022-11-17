@@ -49,12 +49,12 @@ router.get("/character", async function (ctx) {
     ctx.response.body = character.msg;
     return;
   }
-  const { pid, name, ...rest } = character?.data?.[0] ?? {};
-  ctx.response.body = JSON.stringify(
-    { 角色名: name, "角色 ID": pid, ...rest },
-    undefined,
-    2
-  );
+  const characters = (character?.data ?? []).map(({ pid, name, ...rest }) => ({
+    角色名: name,
+    "角色 ID": pid,
+    ...rest,
+  }));
+  ctx.response.body = JSON.stringify(characters, undefined, 2);
   ctx.response.type = "json";
 });
 
